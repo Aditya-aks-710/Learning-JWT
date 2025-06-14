@@ -22,10 +22,20 @@ async function signin() {
     if(!response.data.token){
         return alert(response.data.message);
     }
-    
+
     localStorage.setItem("token", response.data.token);
 
     alert("Successfully signed in!");
+}
+
+function logout() {
+    localStorage.removeItem("token");
+
+    document.getElementById("user-info").innerHTML = "";
+
+    window.location.href = "/";
+
+    alert("logged out");
 }
 
 async function getUserInformation() {
