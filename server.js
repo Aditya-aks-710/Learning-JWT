@@ -4,14 +4,25 @@ const JWT_SECRET = "aditya123";
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 const users = [];
+
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "public/index.html");
+})
 
 app.post("/signup", function(req, res) {
     const username = req.body.username;
     const password = req.body.password;
 
     const user = users.find(u => u.username === username);
+
+    if(user){
+        return res.json({
+            message: "Username already exists !!"
+        });
+    }
 
     users.push({
         username: username,
@@ -30,20 +41,15 @@ app.post("/signin", function(req, res) {
 
     const user = users.find(u => u.username === username);
 
-    if(user){
+    if(!user){
         return res.json({
-            message: "Username already exists !!"
-        });
+            message: "Please SignUp first"
+        })
     }
 
     const token = jwt.sign({
         username
     }, JWT_SECRET);
-
-    users.push({
-        username: username,
-        password: password
-    });
 
     res.json({
         token: token

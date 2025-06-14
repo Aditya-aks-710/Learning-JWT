@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="" />
+</head>
+<body>
+  <div>
+    SignUp
+    <input id="signup-username" type="text" name="username" placeholder="username">
+    <input id="signup-password" type="text" name="password" placeholder="password">
+    <button onclick="signup()">Submit</button>
+  </div>
+  <div>
+    SignIn
+    <input id="signin-username" type="text" name="username" placeholder="username">
+    <input id="signin-password" type="text" name="password" placeholder="password">
+    <button onclick="signin()">Submit</button>
+  </div>
+  <div>
+    User Information
+    <div id="user-info"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
